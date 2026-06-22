@@ -2,6 +2,7 @@
 
 import { Sidebar } from './sidebar'
 import { Header } from './header'
+import { PageTransition } from './page-transition'
 
 interface LayoutWrapperProps {
   children: React.ReactNode
@@ -15,7 +16,9 @@ export function LayoutWrapper({ children, title }: LayoutWrapperProps) {
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header title={title} />
         <div className="flex-1 overflow-auto bg-gray-50 p-8">
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </div>
       </div>
     </div>

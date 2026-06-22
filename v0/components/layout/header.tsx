@@ -1,7 +1,7 @@
 'use client'
 
 import { Bell, Search, Moon, Sun, ChevronDown, User } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface HeaderProps {
   title: string
@@ -9,12 +9,32 @@ interface HeaderProps {
   userName?: string
 }
 
-export function Header({ 
-  title, 
+export function Header({
+  title,
   breadcrumb = 'Dashboard',
-  userName = 'Dr. Jose Dela Cruz' 
+  userName = 'Dr. Jose Dela Cruz'
 }: HeaderProps) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    // Check if theme is stored in localStorage
+    const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
+    if (storedTheme) {
+      setTheme(storedTheme)
+      document.documentElement.classList.toggle('dark', storedTheme === 'dark')
+      document.documentElement.classList.toggle('light', storedTheme === 'light')
+    }
+  }, [])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+    
+    // Toggle classes on html element
+    document.documentElement.classList.remove('light', 'dark')
+    document.documentElement.classList.add(newTheme)
+  }
 
   return (
     <div className="bg-white border-b border-border h-16 flex items-center justify-between px-8 sticky top-0 z-20">
@@ -40,7 +60,7 @@ export function Header({
 
         {/* Theme Toggle */}
         <button
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          onClick={toggleTheme}
           className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all"
           title="Toggle theme"
         >

@@ -1,12 +1,35 @@
 'use client'
 
 import { Package, CheckCircle, AlertCircle, Clock, Trash2, Plus, LogOut, LogIn, Wrench, FileText } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { LayoutWrapper } from '@/components/layout/layout-wrapper'
 import { StatCard } from '@/components/common/stat-card'
 import { AssetCategoryChart } from '@/components/charts/asset-category-chart'
 import { ActivityFeed } from '@/components/common/activity-feed'
 import { QuickActionCard } from '@/components/common/quick-action-card'
 import { getAssetStats, getAssetCategoryBreakdown, activityFeed, getOverdueCheckouts } from '@/data/mock-data'
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut" as const,
+    },
+  },
+}
 
 export default function DashboardPage() {
   const stats = getAssetStats()
@@ -15,9 +38,14 @@ export default function DashboardPage() {
 
   return (
     <LayoutWrapper title="Dashboard">
-      <div className="space-y-8">
+      <motion.div 
+        className="space-y-8"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Welcome Section */}
-        <div className="flex items-center justify-between">
+        <motion.div variants={itemVariants} className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-foreground mb-1">
               Welcome back, Admin 👋
@@ -26,25 +54,27 @@ export default function DashboardPage() {
               Here's what's happening with your inventory today
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Alert Banner */}
         {overdueCount > 0 && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-4 shadow-sm">
-            <div className="p-2 bg-red-100 rounded-lg">
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+          <motion.div variants={itemVariants}>
+            <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-4 shadow-sm">
+              <div className="p-2 bg-red-100 rounded-lg">
+                <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-red-900 mb-1">Overdue Equipment Alert</h3>
+                <p className="text-sm text-red-800">
+                  {overdueCount} item(s) have not been returned by their expected date. Please follow up immediately.
+                </p>
+              </div>
             </div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-red-900 mb-1">Overdue Equipment Alert</h3>
-              <p className="text-sm text-red-800">
-                {overdueCount} item(s) have not been returned by their expected date. Please follow up immediately.
-              </p>
-            </div>
-          </div>
+          </motion.div>
         )}
 
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           <StatCard
             title="Total Assets"
             value={stats.total}
@@ -88,10 +118,10 @@ export default function DashboardPage() {
             progress={stats.retired / stats.total * 100}
             description="Out of service"
           />
-        </div>
+        </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Chart Section - Takes 2 columns */}
           <div className="lg:col-span-2">
             <AssetCategoryChart data={categoryData} />
@@ -101,10 +131,10 @@ export default function DashboardPage() {
           <div className="lg:col-span-1">
             <ActivityFeed activities={activityFeed} />
           </div>
-        </div>
+        </motion.div>
 
         {/* Quick Actions */}
-        <div>
+        <motion.div variants={itemVariants}>
           <h2 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <QuickActionCard
@@ -138,8 +168,8 @@ export default function DashboardPage() {
               color="blue"
             />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </LayoutWrapper>
   )
 }
