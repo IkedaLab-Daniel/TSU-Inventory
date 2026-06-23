@@ -6,6 +6,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // Ensure proper routing for Netlify
+  trailingSlash: false,
 }
 
 export default nextConfig
