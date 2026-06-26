@@ -61,7 +61,7 @@ export function Sidebar() {
     <div
       className={`${
         collapsed ? 'w-20' : 'w-60'
-      } bg-white border-r border-border flex flex-col h-screen transition-all duration-300 ease-in-out relative`}
+      } bg-card border-r border-border flex flex-col h-screen transition-all duration-300 ease-in-out relative`}
     >
       {/* Header */}
       <div className="p-6 border-b border-border">
@@ -80,7 +80,7 @@ export function Sidebar() {
       {/* Collapse Button */}
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-20 bg-white border border-border rounded-full p-1 hover:bg-gray-50 transition-colors shadow-sm z-10"
+        className="absolute -right-3 top-20 bg-card border border-border rounded-full p-1 hover:bg-gray-50 transition-colors shadow-sm z-10"
       >
         {collapsed ? (
           <ChevronRight className="w-4 h-4 text-muted-foreground" />

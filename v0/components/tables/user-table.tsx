@@ -47,7 +47,7 @@ export function UserTable({ users }: UserTableProps) {
 
   return (
     <div className="space-y-4">
-      <div className="bg-white rounded-lg border border-border p-4 space-y-4">
+      <div className="bg-card rounded-lg border border-border p-4 space-y-4">
         <div className="flex gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
@@ -85,7 +85,7 @@ export function UserTable({ users }: UserTableProps) {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-border overflow-hidden">
+      <div className="bg-card rounded-lg border border-border overflow-hidden">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border bg-secondary">

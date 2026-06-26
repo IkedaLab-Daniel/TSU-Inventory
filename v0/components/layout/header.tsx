@@ -37,7 +37,7 @@ export function Header({
   }
 
   return (
-    <div className="bg-white border-b border-border h-16 flex items-center justify-between px-8 sticky top-0 z-20">
+    <div className="bg-card border-b border-border h-16 flex items-center justify-between px-8 sticky top-0 z-20">
       {/* Left Section */}
       <div>
         <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">

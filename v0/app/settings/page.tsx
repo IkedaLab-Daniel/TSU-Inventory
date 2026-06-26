@@ -67,7 +67,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Profile Section */}
-        <section className="bg-white rounded-lg border border-border p-6 shadow-sm">
+        <section className="bg-card rounded-lg border border-border p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-5">
             <div className="p-2 bg-blue-50 rounded-lg">
               <User className="w-5 h-5 text-blue-600" />
@@ -122,7 +122,7 @@ export default function SettingsPage() {
         </section>
 
         {/* Role & Access Section */}
-        <section className="bg-white rounded-lg border border-border p-6 shadow-sm">
+        <section className="bg-card rounded-lg border border-border p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-5">
             <div className="p-2 bg-purple-50 rounded-lg">
               <Shield className="w-5 h-5 text-purple-600" />
@@ -168,7 +168,7 @@ export default function SettingsPage() {
         </section>
 
         {/* Notification Preferences */}
-        <section className="bg-white rounded-lg border border-border p-6 shadow-sm">
+        <section className="bg-card rounded-lg border border-border p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-5">
             <div className="p-2 bg-yellow-50 rounded-lg">
               <Bell className="w-5 h-5 text-yellow-600" />
@@ -199,7 +199,7 @@ export default function SettingsPage() {
                     className="sr-only peer"
                   />
                   <div className="w-9 h-5 bg-gray-200 rounded-full peer-checked:bg-blue-600 transition-colors" />
-                  <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-sm transition-transform peer-checked:translate-x-4" />
+                  <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-card rounded-full shadow-sm transition-transform peer-checked:translate-x-4" />
                 </div>
               </label>
             ))}
@@ -207,7 +207,7 @@ export default function SettingsPage() {
         </section>
 
         {/* System Preferences */}
-        <section className="bg-white rounded-lg border border-border p-6 shadow-sm">
+        <section className="bg-card rounded-lg border border-border p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-5">
             <div className="p-2 bg-green-50 rounded-lg">
               <Palette className="w-5 h-5 text-green-600" />

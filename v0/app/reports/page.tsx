@@ -151,7 +151,7 @@ export default function ReportsPage() {
               className={`p-6 rounded-lg border-2 transition-all text-left ${
                 selectedReport === report.type
                   ? 'border-primary bg-primary/5'
-                  : 'border-border bg-white hover:border-primary/50'
+                  : 'border-border bg-card hover:border-primary/50'
               }`}
             >
               <div className="flex items-start gap-3">
@@ -167,7 +167,7 @@ export default function ReportsPage() {
 
         {/* Report Filters and Preview */}
         {selectedReport && (
-          <div className="bg-white rounded-lg border border-border p-8 space-y-6">
+          <div className="bg-card rounded-lg border border-border p-8 space-y-6">
             {/* Filters */}
             <div className="space-y-4 pb-6 border-b border-border">
               <h3 className="font-semibold text-foreground">Report Filters</h3>

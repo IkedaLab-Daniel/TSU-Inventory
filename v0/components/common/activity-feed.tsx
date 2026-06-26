@@ -27,7 +27,7 @@ const typeColors: Record<string, string> = {
 
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
-    <div className="bg-white rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-card rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow">
       <h3 className="text-lg font-semibold text-foreground mb-5">Recent Activity</h3>
       <div className="space-y-4">
         {activities.map(activity => {

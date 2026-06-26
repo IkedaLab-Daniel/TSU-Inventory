@@ -53,7 +53,7 @@ export function QuickActionCard({
   return (
     <button
       onClick={onClick}
-      className={`w-full bg-white border border-border rounded-xl p-5 text-left transition-all duration-300 hover:shadow-lg hover:border-gray-300 hover:-translate-y-1 group`}
+      className={`w-full bg-card border border-border rounded-xl p-5 text-left transition-all duration-300 hover:shadow-lg hover:border-gray-300 hover:-translate-y-1 group`}
     >
       <div className="flex items-start justify-between mb-3">
         <div className={`p-3 rounded-lg ${colors.bg} ${colors.text} group-hover:scale-110 transition-transform duration-300`}>

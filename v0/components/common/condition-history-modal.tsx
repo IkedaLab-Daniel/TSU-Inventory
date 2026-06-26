@@ -25,7 +25,7 @@ const conditionColors: Record<string, string> = {
 export function ConditionHistoryModal({ assetName, history, onClose }: ConditionHistoryModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="bg-card rounded-2xl shadow-2xl w-full max-w-md">
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-border">
           <div>
@@ -51,7 +51,7 @@ export function ConditionHistoryModal({ assetName, history, onClose }: Condition
               <div className="space-y-5">
                 {history.map((entry, i) => (
                   <div key={i} className="flex gap-4 relative">
-                    <div className="w-6 h-6 rounded-full bg-white border-2 border-primary flex items-center justify-center flex-shrink-0 z-10">
+                    <div className="w-6 h-6 rounded-full bg-card border-2 border-primary flex items-center justify-center flex-shrink-0 z-10">
                       <div className="w-2 h-2 rounded-full bg-primary" />
                     </div>
                     <div className="flex-1 pb-1">

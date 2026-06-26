@@ -60,7 +60,7 @@ export default function CheckoutPage() {
     <LayoutWrapper title="Check-Out Module">
       <div className="space-y-8">
         {/* Form */}
-        <div className="bg-white rounded-lg border border-border p-8 shadow-sm">
+        <div className="bg-card rounded-lg border border-border p-8 shadow-sm">
           <h2 className="text-xl font-bold text-foreground mb-6">New Check-Out</h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">

@@ -64,7 +64,7 @@ export function StatCard({
   const colors = colorClasses[color]
 
   return (
-    <div className="bg-white rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300 group">
+    <div className="bg-card rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300 group">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
           <p className="text-sm font-medium text-muted-foreground mb-1">{title}</p>
@@ -95,7 +95,7 @@ export function StatCard({
 
       {progress !== undefined && (
         <div className="mb-3">
-          <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
             <div
               className={`h-full bg-gradient-to-r ${colors.gradient} rounded-full transition-all duration-500`}
               style={{ width: `${progress}%` }}

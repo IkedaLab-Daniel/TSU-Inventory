@@ -76,7 +76,7 @@ export default function MaintenancePage() {
         {/* Form Modal */}
         {showForm && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg border border-border p-8 max-w-2xl w-full max-h-[90vh] overflow-auto shadow-lg">
+            <div className="bg-card rounded-lg border border-border p-8 max-w-2xl w-full max-h-[90vh] overflow-auto shadow-lg">
               <h3 className="text-xl font-bold text-foreground mb-6">Log Maintenance Record</h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">

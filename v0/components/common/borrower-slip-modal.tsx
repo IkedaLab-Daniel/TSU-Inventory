@@ -24,7 +24,7 @@ export function BorrowerSlipModal({ record, onClose }: BorrowerSlipModalProps) {
       `}</style>
 
       <div id="borrower-slip-root" className="w-full h-full flex items-center justify-center p-4">
-        <div className="slip-card bg-white rounded-2xl shadow-2xl w-full max-w-lg">
+        <div className="slip-card bg-card rounded-2xl shadow-2xl w-full max-w-lg">
           {/* Modal Header */}
           <div className="no-print flex items-center justify-between px-6 pt-5 pb-0">
             <h2 className="text-lg font-semibold text-foreground">Borrower Slip</h2>

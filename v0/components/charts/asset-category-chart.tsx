@@ -8,7 +8,7 @@ interface AssetCategoryChartProps {
 
 export function AssetCategoryChart({ data }: AssetCategoryChartProps) {
   return (
-    <div className="bg-white rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-card rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow">
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-foreground mb-1">Asset Distribution</h3>
         <p className="text-sm text-muted-foreground">Breakdown by category</p>

@@ -15,7 +15,7 @@ export function LayoutWrapper({ children, title }: LayoutWrapperProps) {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header title={title} />
-        <div className="flex-1 overflow-auto bg-gray-50 p-8">
+        <div className="flex-1 overflow-auto bg-background p-8">
           <PageTransition>
             {children}
           </PageTransition>
