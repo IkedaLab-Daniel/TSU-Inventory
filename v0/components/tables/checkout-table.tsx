@@ -73,7 +73,7 @@ export function CheckoutTable({ records, showActions = true }: CheckoutTableProp
             {paginatedRecords.map(record => {
               const overdue = isOverdue(record.expectedReturnDate, record.status)
               return (
-                <tr key={record.id} className={`border-b border-border hover:bg-secondary/50 ${overdue ? 'bg-red-50/40' : ''}`}>
+                <tr key={record.id} className={`border-b border-border transition-colors hover:bg-muted/50 ${overdue ? 'bg-red-50/40' : ''}`}>
                   <td className="px-6 py-4 text-foreground font-medium">{record.id}</td>
                   <td className="px-6 py-4 text-foreground">{record.assetName}</td>
                   <td className="px-6 py-4 text-foreground">{record.borrowerName}</td>

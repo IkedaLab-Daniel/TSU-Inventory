@@ -98,7 +98,7 @@ export function AuditTable({ logs }: AuditTableProps) {
           </thead>
           <tbody>
             {paginatedLogs.map(log => (
-              <tr key={log.id} className="border-b border-border hover:bg-secondary/50">
+              <tr key={log.id} className="border-b border-border transition-colors hover:bg-muted/50">
                 <td className="px-6 py-4 text-foreground text-xs font-medium">{log.timestamp}</td>
                 <td className="px-6 py-4 text-foreground">{log.user}</td>
                 <td className="px-6 py-4">

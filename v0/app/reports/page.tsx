@@ -235,7 +235,7 @@ export default function ReportsPage() {
                 </thead>
                 <tbody>
                   {reportData?.data.slice(0, 20).map((row, idx) => (
-                    <tr key={idx} className="border-b border-border hover:bg-secondary/50">
+                    <tr key={idx} className="border-b border-border transition-colors hover:bg-muted/50">
                       {Object.values(row).map((value, colIdx) => (
                         <td key={colIdx} className="px-6 py-4 text-foreground">
                           {typeof value === 'number' && value > 1000 ? (

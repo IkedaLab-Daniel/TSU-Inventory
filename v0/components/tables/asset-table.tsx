@@ -129,7 +129,7 @@ export function AssetTable({ assets }: AssetTableProps) {
             {paginatedAssets.map(asset => {
               const ws = getWarrantyStatus(asset.warrantyExpiry)
               return (
-                <tr key={asset.id} className="border-b border-border hover:bg-secondary/50">
+                <tr key={asset.id} className="border-b border-border transition-colors hover:bg-muted/50">
                   <td className="px-6 py-4 text-foreground font-medium">{asset.id}</td>
                   <td className="px-6 py-4 text-foreground">{asset.name}</td>
                   <td className="px-6 py-4 text-foreground">{asset.category}</td>

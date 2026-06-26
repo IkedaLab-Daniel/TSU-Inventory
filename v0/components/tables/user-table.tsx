@@ -100,7 +100,7 @@ export function UserTable({ users }: UserTableProps) {
           </thead>
           <tbody>
             {paginatedUsers.map(user => (
-              <tr key={user.id} className="border-b border-border hover:bg-secondary/50">
+              <tr key={user.id} className="border-b border-border transition-colors hover:bg-muted/50">
                 <td className="px-6 py-4 text-foreground font-medium">{user.id}</td>
                 <td className="px-6 py-4 text-foreground">{user.name}</td>
                 <td className="px-6 py-4 text-foreground text-xs">{user.email}</td>
