@@ -140,13 +140,18 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="p-3 border-t border-border space-y-1">
-        <button
-          className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-all"
+        <Link
+          href="/settings"
+          className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-all ${
+            pathname === '/settings'
+              ? 'bg-primary/10 text-primary font-medium'
+              : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+          }`}
           title={collapsed ? 'Settings' : undefined}
         >
           <Settings className={`w-5 h-5 flex-shrink-0 ${collapsed ? 'mx-auto' : ''}`} />
           {!collapsed && <span>Settings</span>}
-        </button>
+        </Link>
 
         {/* Logout */}
         <button
