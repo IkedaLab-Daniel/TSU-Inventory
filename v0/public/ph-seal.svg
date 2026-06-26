@@ -1,0 +1,9 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#1e3a8a" stroke="#fbbf24" stroke-width="4"/>
+  <circle cx="40" cy="40" r="30" fill="#ffffff"/>
+  <path d="M40 15 L45 30 L60 30 L48 40 L53 55 L40 45 L27 55 L32 40 L20 30 L35 30 Z" fill="#1e3a8a"/>
+  <circle cx="40" cy="40" r="8" fill="#ef4444"/>
+  <text x="40" y="72" font-family="Arial, sans-serif" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="bold">PHILIPPINES</text>
+</svg>
+
+<!-- Made with Bob -->

@@ -2,18 +2,18 @@
 
 import { Bell, Search, Moon, Sun, ChevronDown, User } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useAuth } from '@/context/auth-context'
 
 interface HeaderProps {
   title: string
   breadcrumb?: string
-  userName?: string
 }
 
 export function Header({
   title,
   breadcrumb = 'Dashboard',
-  userName = 'Dr. Jose Dela Cruz'
 }: HeaderProps) {
+  const { user } = useAuth()
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
@@ -81,11 +81,11 @@ export function Header({
         <div className="flex items-center gap-3 pl-3 border-l border-border">
           <button className="flex items-center gap-3 hover:bg-muted px-3 py-2 rounded-lg transition-all group">
             <div className="text-right hidden lg:block">
-              <p className="text-sm font-medium text-foreground">{userName}</p>
-              <p className="text-xs text-muted-foreground">System Administrator</p>
+              <p className="text-sm font-medium text-foreground">{user?.name ?? ''}</p>
+              <p className="text-xs text-muted-foreground">{user?.role ?? ''}</p>
             </div>
             <div className="w-9 h-9 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center ring-2 ring-primary/10">
-              <User className="w-5 h-5 text-primary-foreground" />
+              <span className="text-sm font-semibold text-primary-foreground">{user?.initials ?? <User className="w-5 h-5" />}</span>
             </div>
             <ChevronDown className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
           </button>

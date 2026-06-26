@@ -4,12 +4,15 @@ import { useState, useMemo } from 'react'
 import { Search, Edit2, Trash2 } from 'lucide-react'
 import { StatusBadge } from '@/components/common/status-badge'
 import { User } from '@/data/mock-data'
+import { useAuth } from '@/context/auth-context'
 
 interface UserTableProps {
   users: User[]
 }
 
 export function UserTable({ users }: UserTableProps) {
+  const { user: currentUser } = useAuth()
+  const isAdmin = currentUser?.role === 'MIS Admin'
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRole, setSelectedRole] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
@@ -92,7 +95,7 @@ export function UserTable({ users }: UserTableProps) {
               <th className="px-6 py-3 text-left font-semibold text-foreground">Role</th>
               <th className="px-6 py-3 text-left font-semibold text-foreground">Last Login</th>
               <th className="px-6 py-3 text-left font-semibold text-foreground">Status</th>
-              <th className="px-6 py-3 text-left font-semibold text-foreground">Actions</th>
+              {isAdmin && <th className="px-6 py-3 text-left font-semibold text-foreground">Actions</th>}
             </tr>
           </thead>
           <tbody>
@@ -110,14 +113,16 @@ export function UserTable({ users }: UserTableProps) {
                 <td className="px-6 py-4">
                   <StatusBadge status={user.status as 'Active' | 'Inactive'} />
                 </td>
-                <td className="px-6 py-4 flex gap-2">
-                  <button className="p-1.5 hover:bg-secondary rounded transition-colors">
-                    <Edit2 className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                  <button className="p-1.5 hover:bg-secondary rounded transition-colors">
-                    <Trash2 className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                </td>
+                {isAdmin && (
+                  <td className="px-6 py-4 flex gap-2">
+                    <button className="p-1.5 hover:bg-secondary rounded transition-colors">
+                      <Edit2 className="w-4 h-4 text-muted-foreground" />
+                    </button>
+                    <button className="p-1.5 hover:bg-secondary rounded transition-colors">
+                      <Trash2 className="w-4 h-4 text-muted-foreground" />
+                    </button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

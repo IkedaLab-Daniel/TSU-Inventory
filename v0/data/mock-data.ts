@@ -1,4 +1,5 @@
 // Mock data for ICT-IMS System
+import type { ConditionEntry } from '@/components/common/condition-history-modal'
 
 export interface Asset {
   id: string
@@ -380,6 +381,28 @@ export const activityFeed = [
     timestamp: '1 day ago',
   },
 ]
+
+export const conditionHistory: Record<string, ConditionEntry[]> = {
+  'AST-001': [
+    { date: '2023-01-15', condition: 'Good', note: 'Asset received in new condition.', changedBy: 'Dr. Jose Dela Cruz' },
+    { date: '2024-03-10', condition: 'Fair', note: 'Minor scratches observed after use.', changedBy: 'Maria Santos' },
+  ],
+  'AST-003': [
+    { date: '2021-06-10', condition: 'Good', note: 'Asset received in new condition.', changedBy: 'Dr. Jose Dela Cruz' },
+    { date: '2023-09-05', condition: 'Fair', note: 'Paper feed issues, cleaned and calibrated.', changedBy: 'Juan Cruz' },
+    { date: '2024-06-19', condition: 'Fair', note: 'Condition confirmed after preventive maintenance.', changedBy: 'Dr. Jose Dela Cruz' },
+  ],
+  'AST-004': [
+    { date: '2022-02-28', condition: 'Good', note: 'Asset received in new condition.', changedBy: 'Dr. Jose Dela Cruz' },
+    { date: '2023-11-12', condition: 'Fair', note: 'Lamp brightness reduced.', changedBy: 'Maria Santos' },
+    { date: '2024-06-01', condition: 'Poor', note: 'Lamp failure, sent for corrective maintenance.', changedBy: 'Juan Cruz' },
+  ],
+  'AST-008': [
+    { date: '2019-01-22', condition: 'Good', note: 'Asset received in new condition.', changedBy: 'Dr. Jose Dela Cruz' },
+    { date: '2021-05-30', condition: 'Fair', note: 'Battery life significantly reduced.', changedBy: 'Maria Santos' },
+    { date: '2022-08-15', condition: 'Poor', note: 'Multiple hardware failures, recommended for retirement.', changedBy: 'Dr. Jose Dela Cruz' },
+  ],
+}
 
 export function getAssetStats() {
   const total = assets.length

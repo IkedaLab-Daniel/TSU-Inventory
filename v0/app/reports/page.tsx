@@ -5,6 +5,7 @@ import { Download, FileText } from 'lucide-react'
 import { LayoutWrapper } from '@/components/layout/layout-wrapper'
 import { assets, checkoutRecords, maintenanceRecords, getOverdueCheckouts } from '@/data/mock-data'
 import { StatusBadge } from '@/components/common/status-badge'
+import { useAuth } from '@/context/auth-context'
 
 type ReportType = 'inventory' | 'utilization' | 'overdue' | 'maintenance' | 'checkout'
 
@@ -43,6 +44,8 @@ const reportTypes: ReportData[] = [
 ]
 
 export default function ReportsPage() {
+  const { user } = useAuth()
+  const isAdmin = user?.role === 'MIS Admin'
   const [selectedReport, setSelectedReport] = useState<ReportType | null>(null)
   const [startDate, setStartDate] = useState(
     new Date(new Date().setDate(new Date().getDate() - 30))
@@ -256,17 +259,39 @@ export default function ReportsPage() {
               </p>
             )}
 
-            {/* Export Buttons */}
-            <div className="flex gap-4 pt-4 border-t border-border">
-              <button className="flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity">
-                <Download className="w-4 h-4" />
-                Download PDF
-              </button>
-              <button className="flex items-center gap-2 px-6 py-2 bg-secondary text-foreground rounded-lg font-medium hover:bg-muted transition-colors">
-                <Download className="w-4 h-4" />
-                Download Excel
-              </button>
-            </div>
+            {/* Export Buttons — Admin only */}
+            {isAdmin && (
+              <div className="flex gap-4 pt-4 border-t border-border">
+                <button
+                  onClick={() => window.print()}
+                  className="flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
+                >
+                  <Download className="w-4 h-4" />
+                  Download PDF
+                </button>
+                <button
+                  onClick={() => {
+                    if (!reportData) return
+                    const header = reportData.columns.join(',')
+                    const rows = reportData.data.map(row =>
+                      Object.values(row).map(v => `"${v}"`).join(',')
+                    )
+                    const csv = [header, ...rows].join('\n')
+                    const blob = new Blob([csv], { type: 'text/csv' })
+                    const url = URL.createObjectURL(blob)
+                    const a = document.createElement('a')
+                    a.href = url
+                    a.download = `${reportData.title.replace(/\s+/g, '_')}.csv`
+                    a.click()
+                    URL.revokeObjectURL(url)
+                  }}
+                  className="flex items-center gap-2 px-6 py-2 bg-secondary text-foreground rounded-lg font-medium hover:bg-muted transition-colors"
+                >
+                  <Download className="w-4 h-4" />
+                  Download Excel (CSV)
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

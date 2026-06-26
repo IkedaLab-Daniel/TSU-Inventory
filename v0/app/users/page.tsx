@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { Plus } from 'lucide-react'
+import { Plus, Info } from 'lucide-react'
 import { LayoutWrapper } from '@/components/layout/layout-wrapper'
 import { UserTable } from '@/components/tables/user-table'
 import { users } from '@/data/mock-data'
+import { useAuth } from '@/context/auth-context'
 
 interface UserFormData {
   name: string
@@ -15,6 +16,8 @@ interface UserFormData {
 }
 
 export default function UsersPage() {
+  const { user } = useAuth()
+  const isAdmin = user?.role === 'MIS Admin'
   const [showForm, setShowForm] = useState(false)
   const [formData, setFormData] = useState<UserFormData>({
     name: '',
@@ -61,14 +64,24 @@ export default function UsersPage() {
             <h2 className="text-2xl font-bold text-foreground">User Management</h2>
             <p className="text-sm text-muted-foreground mt-1">Manage system users and access control</p>
           </div>
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className="flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
-          >
-            <Plus className="w-5 h-5" />
-            Add User
-          </button>
+          {isAdmin && (
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
+            >
+              <Plus className="w-5 h-5" />
+              Add User
+            </button>
+          )}
         </div>
+
+        {/* Read-only notice for non-admins */}
+        {!isAdmin && (
+          <div className="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-800">
+            <Info className="w-5 h-5 flex-shrink-0 mt-0.5" />
+            <p>You have read-only access to this page. Contact a System Administrator to manage user accounts.</p>
+          </div>
+        )}
 
         {/* Form Modal */}
         {showForm && (
